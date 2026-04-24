@@ -18,6 +18,7 @@ import {
   X,
 } from "lucide-react";
 import { soundLabCategories, works } from "./data/siteData.js";
+import { assetPath } from "./utils/assets.js";
 
 const blue = "#0757ff";
 
@@ -159,7 +160,7 @@ function Hero({ onSignaturePlay, signaturePlaying }) {
       </div>
       <motion.img
         className="hero-image"
-        src="/images/hero/main.png"
+        src={assetPath("/images/hero/main.png")}
         alt="Sydney Tseng smiling in a black and white portrait"
         initial={{ opacity: 0, scale: 1.02 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -314,7 +315,7 @@ function About() {
         transition={{ type: "spring", stiffness: 220, damping: 17 }}
       >
         <span className="tape" />
-        <img src="/images/about/side.jpeg" alt="Sydney in a recording studio" />
+        <img src={assetPath("/images/about/side.jpeg")} alt="Sydney in a recording studio" />
         <figcaption>:-)</figcaption>
       </motion.figure>
     </section>
