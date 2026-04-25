@@ -6,6 +6,9 @@ import {
   ArrowDown,
   ArrowLeft,
   ArrowRight,
+  Check,
+  Crosshair,
+  Heart,
   Instagram,
   Mail,
   MapPin,
@@ -18,7 +21,7 @@ import {
   X,
 } from "lucide-react";
 import { soundLabCategories, works } from "./data/siteData.js";
-import { assetPath } from "./utils/assets.js";
+import { appPath, assetPath } from "./utils/assets.js";
 
 const blue = "#0757ff";
 
@@ -120,14 +123,14 @@ function useAudioEngine() {
 function Header() {
   return (
     <header className="site-header">
-      <a href="#top" className="brand" aria-label="Sydney Tseng home">
+      <a href={appPath("#top")} className="brand" aria-label="Sydney Tseng home">
         Sydney Tseng
       </a>
       <nav aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#sound-lab">Sound Lab</a>
-        <a href="#contact">Contact</a>
+        <a href={appPath("#work")}>Work</a>
+        <a href={appPath("about")}>About</a>
+        <a href={appPath("#sound-lab")}>Sound Lab</a>
+        <a href={appPath("#contact")}>Contact</a>
       </nav>
       <Sparkle className="header-spark" aria-hidden="true" />
     </header>
@@ -307,7 +310,7 @@ function About() {
           <span className="circled-word">feelings</span>. With a mix of creativity and technical skills, I craft
           audio that connects players to the world.
         </p>
-        <a className="outline-button" href="#contact">More about me</a>
+        <a className="outline-button" href={appPath("about")}>More about me</a>
       </div>
       <motion.figure
         className="polaroid"
@@ -342,6 +345,204 @@ function Footer() {
       </div>
       <DoodleText className="thanks-note">Thanks for visiting!</DoodleText>
     </footer>
+  );
+}
+
+const approachItems = [
+  {
+    icon: "chaos",
+    title: "Embrace Chaos",
+    copy: "I dive into the messy part to find what’s real.",
+  },
+  {
+    icon: "purpose",
+    title: "Shape With Purpose",
+    copy: "Every sound has a reason. I make it count.",
+  },
+  {
+    icon: "heart",
+    title: "Feel First",
+    copy: "If it doesn’t feel right, it’s not done.",
+  },
+  {
+    icon: "care",
+    title: "Deliver With Care",
+    copy: "Creative mind, professional outcome.",
+  },
+];
+
+function AboutApproachIcon({ type }) {
+  if (type === "purpose") return <Crosshair />;
+  if (type === "heart") return <Heart />;
+  if (type === "care") return <Check />;
+
+  return (
+    <span className="chaos-icon" aria-hidden="true">
+      {Array.from({ length: 5 }).map((_, index) => (
+        <i key={index} />
+      ))}
+    </span>
+  );
+}
+
+function AboutPage() {
+  return (
+    <main className="about-page">
+      <a className="about-back" href={appPath("#top")}>
+        <ArrowLeft size={18} /> Back
+      </a>
+
+      <section className="about-poster" aria-labelledby="about-page-title">
+        <div className="about-main-copy">
+          <div className="about-title-row">
+            <h1 id="about-page-title">About Me</h1>
+            <Sparkle className="about-title-spark" aria-hidden="true" />
+          </div>
+          <DrawnLine className="about-title-line" />
+
+          <div className="about-story">
+            <p>
+              I’m a sound designer who
+              <br />
+              turns ideas into feelings.
+              <br />
+              Part art, part tech—
+              <br />
+              all instinct.
+            </p>
+            <p>
+              From playful bleep to
+              <br />
+              heavy impact, I design
+              <br />
+              sound that fits the world
+              <br />
+              it lives in.
+            </p>
+          </div>
+
+          <DoodleText className="about-blue-notes">
+            I get excited by weird ideas.
+            <br />
+            I care about details.
+            <br />
+            I deliver what’s needed.
+          </DoodleText>
+
+          <section className="tools-card" aria-labelledby="tools-title">
+            <h2 id="tools-title">Tools & Weapons</h2>
+            <DrawnLine />
+            <ul>
+              <li>
+                <span>→ Logic Pro X</span>
+                <Waveform active />
+              </li>
+              <li>
+                <span>→ AI</span>
+                <Sparkle aria-hidden="true" />
+              </li>
+              <li>
+                <span>→ Curiosity :P</span>
+                <span className="tool-smile">⌣</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <div className="about-photo-column">
+          <motion.figure
+            className="about-feature-polaroid"
+            initial={{ opacity: 0, y: 16, rotate: -1 }}
+            animate={{ opacity: 1, y: 0, rotate: 0.8 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <span className="about-photo-tape" />
+            <img src={assetPath("/images/about/about_me.jpeg")} alt="Sydney Tseng at a piano" />
+            <figcaption>
+              Making noise
+              <br />
+              since forever <span>⌣</span>
+            </figcaption>
+          </motion.figure>
+
+          <section className="work-tags" aria-labelledby="work-tags-title">
+            <h2 id="work-tags-title">I Work On</h2>
+            <DrawnLine />
+            <div>
+              <span>Game Audio</span>
+              <span>UI / UX Sound</span>
+              <span>Sound System</span>
+              <span>Voice & Narrative</span>
+              <span>Music & Sound Design</span>
+            </div>
+            <DoodleText>Always down for something new.</DoodleText>
+          </section>
+        </div>
+
+        <aside className="about-side">
+          <DoodleText className="about-side-note">
+            I design sound
+            <br />
+            that makes pixels
+            <br />
+            feel alive.
+          </DoodleText>
+
+          <section className="approach-section" aria-labelledby="approach-title">
+            <h2 id="approach-title">My Approach</h2>
+            <DrawnLine />
+            <div className="approach-list">
+              {approachItems.map((item) => (
+                <article className="approach-item" key={item.title}>
+                  <AboutApproachIcon type={item.icon} />
+                  <ArrowRight className="approach-arrow" />
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.copy}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="currently-note" aria-labelledby="currently-title">
+            <span className="currently-tape" />
+            <h2 id="currently-title">Currently</h2>
+            <DrawnLine />
+            <ul>
+              <li>crafting playful and addictive sound experiences</li>
+              <li>exploring textures, voices, and experimental stuff</li>
+              <li>leveling up my game every day</li>
+            </ul>
+            <Sparkle className="currently-spark" aria-hidden="true" />
+            <DoodleText>
+              Let’s create
+              <br />
+              something cool !
+            </DoodleText>
+          </section>
+        </aside>
+      </section>
+
+      <footer className="about-contact" id="contact">
+        <h2>Let’s Connect</h2>
+        <DrawnLine />
+        <address>
+          <a href="mailto:sydneytseng.sound@gmail.com">
+            <Mail /> sydneytseng.sound@gmail.com
+          </a>
+          <a href="https://instagram.com/sydneytseng.sound" target="_blank" rel="noreferrer">
+            <Instagram /> @sydneytseng.sound
+          </a>
+          <span>
+            <MapPin /> Taipei, Taiwan
+          </span>
+        </address>
+        <div className="globe-doodle about-globe" aria-hidden="true">
+          <span>☺</span>
+        </div>
+      </footer>
+    </main>
   );
 }
 
@@ -380,7 +581,7 @@ function WorkModal({ work, onClose }) {
   );
 }
 
-export default function App() {
+function HomePage() {
   const [activeWork, setActiveWork] = useState(null);
   const signatureSample = soundLabCategories[0].samples[0];
   const { playingId, toggle, stop } = useAudioEngine();
@@ -405,4 +606,19 @@ export default function App() {
       />
     </>
   );
+}
+
+function getRoute() {
+  const basePath = new URL(import.meta.env.BASE_URL, window.location.origin).pathname;
+  let path = window.location.pathname;
+
+  if (path.startsWith(basePath)) {
+    path = path.slice(basePath.length);
+  }
+
+  return `/${path.replace(/^\/+/, "")}`;
+}
+
+export default function App() {
+  return getRoute() === "/about" ? <AboutPage /> : <HomePage />;
 }

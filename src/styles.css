@@ -684,6 +684,485 @@ h2 {
   transform: rotate(-10deg);
 }
 
+.about-page {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #020202;
+  color: #fff;
+}
+
+.about-back {
+  position: fixed;
+  z-index: 20;
+  top: 34px;
+  left: clamp(22px, 4vw, 56px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.about-back:hover {
+  color: var(--blue);
+}
+
+.about-poster {
+  display: grid;
+  grid-template-columns: minmax(290px, 0.9fr) minmax(340px, 0.95fr) minmax(320px, 0.85fr);
+  gap: clamp(28px, 4vw, 64px);
+  min-height: calc(100vh - 150px);
+  padding: 86px clamp(28px, 4vw, 56px) 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.about-title-row {
+  position: relative;
+}
+
+.about-title-row h1 {
+  margin: 0;
+  font-size: clamp(58px, 6vw, 86px);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.about-title-spark {
+  position: absolute;
+  right: -12px;
+  top: -8px;
+  width: 54px;
+  height: 54px;
+  color: var(--blue);
+  stroke-width: 2.2;
+  animation: star-wiggle 3.4s ease-in-out infinite;
+}
+
+.about-title-line {
+  width: min(100%, 430px);
+  height: 38px;
+  margin: 8px 0 54px;
+}
+
+.about-title-line path,
+.about-main-copy .drawn-line path,
+.work-tags .drawn-line path,
+.approach-section .drawn-line path,
+.currently-note .drawn-line path,
+.about-contact .drawn-line path {
+  stroke-width: 5;
+}
+
+.about-story {
+  display: grid;
+  gap: 30px;
+  margin-bottom: 40px;
+  font-size: clamp(20px, 1.65vw, 26px);
+  line-height: 1.42;
+}
+
+.about-story p {
+  margin: 0;
+}
+
+.about-blue-notes {
+  display: block;
+  margin-bottom: 56px;
+  font-size: clamp(18px, 1.4vw, 22px);
+  line-height: 1.55;
+  rotate: -4deg;
+}
+
+.tools-card {
+  width: min(100%, 390px);
+  padding: 28px 26px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tools-card h2,
+.work-tags h2,
+.approach-section h2,
+.currently-note h2,
+.about-contact h2 {
+  margin: 0;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tools-card .drawn-line,
+.work-tags .drawn-line,
+.approach-section .drawn-line,
+.currently-note .drawn-line,
+.about-contact .drawn-line {
+  width: min(100%, 240px);
+  height: 22px;
+}
+
+.tools-card ul {
+  display: grid;
+  gap: 20px;
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+  font-size: clamp(18px, 1.5vw, 22px);
+  text-transform: uppercase;
+}
+
+.tools-card li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px;
+  align-items: center;
+  gap: 16px;
+}
+
+.tools-card svg,
+.tools-card .waveform,
+.tool-smile {
+  justify-self: end;
+  color: var(--blue);
+}
+
+.tools-card .waveform {
+  min-width: 54px;
+  height: 22px;
+}
+
+.tool-smile {
+  font-family: "Permanent Marker", "Space Mono", monospace;
+  font-size: 30px;
+}
+
+.about-photo-column {
+  display: grid;
+  align-content: center;
+  gap: 34px;
+  min-width: 0;
+  padding-top: 36px;
+}
+
+.about-feature-polaroid {
+  position: relative;
+  width: min(100%, 460px);
+  margin: 0 auto;
+  padding: 18px 18px 70px;
+  background: #f3f1ea;
+  color: var(--blue);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+}
+
+.about-feature-polaroid img {
+  width: 100%;
+  aspect-ratio: 0.82;
+  object-fit: cover;
+  object-position: center 42%;
+  filter: grayscale(1) contrast(1.08) brightness(1.18);
+}
+
+.about-feature-polaroid figcaption {
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+  font-family: "Permanent Marker", "Space Mono", monospace;
+  font-size: clamp(17px, 1.25vw, 21px);
+  line-height: 1.12;
+  text-align: left;
+  text-transform: uppercase;
+  rotate: -3deg;
+}
+
+.about-feature-polaroid figcaption span {
+  display: inline-block;
+  font-size: 25px;
+}
+
+.about-photo-tape,
+.currently-tape {
+  position: absolute;
+  z-index: 2;
+  width: 96px;
+  height: 38px;
+  background: rgba(226, 221, 202, 0.78);
+}
+
+.about-photo-tape {
+  top: -22px;
+  left: 24%;
+  rotate: -12deg;
+}
+
+.work-tags {
+  width: min(100%, 520px);
+  margin: 0 auto;
+}
+
+.work-tags > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.work-tags span:not(.doodle-text) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  text-transform: uppercase;
+}
+
+.work-tags .doodle-text {
+  display: block;
+  margin-top: 26px;
+  font-size: clamp(18px, 1.45vw, 23px);
+  text-align: center;
+  rotate: -4deg;
+}
+
+.work-tags .doodle-text::after,
+.about-side-note::after,
+.about-contact h2::after,
+.currently-note .doodle-text::after {
+  display: block;
+  height: 8px;
+  content: "";
+  border-bottom: 4px solid var(--blue);
+  border-radius: 50%;
+  rotate: -3deg;
+}
+
+.work-tags .doodle-text::after {
+  width: min(92%, 360px);
+  margin: 2px auto 0;
+}
+
+.about-side {
+  display: grid;
+  align-content: start;
+  gap: 42px;
+  min-width: 0;
+  padding-top: 10px;
+}
+
+.about-side-note {
+  justify-self: end;
+  max-width: 330px;
+  font-size: clamp(24px, 2vw, 31px);
+  line-height: 1.25;
+  text-align: right;
+  rotate: -3deg;
+}
+
+.about-side-note::after {
+  width: 190px;
+  margin: 8px 0 0 auto;
+}
+
+.approach-section {
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.approach-list {
+  display: grid;
+  gap: clamp(24px, 3.4vh, 40px);
+  margin-top: 24px;
+}
+
+.approach-item {
+  display: grid;
+  grid-template-columns: 66px 34px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+}
+
+.approach-item > svg:first-child {
+  width: 58px;
+  height: 58px;
+  padding: 5px;
+  color: #fff;
+  stroke-width: 1.7;
+}
+
+.approach-arrow {
+  color: var(--blue);
+  stroke-width: 2.4;
+}
+
+.approach-item h3 {
+  margin: 0 0 8px;
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.approach-item p {
+  max-width: 250px;
+  margin: 0;
+  font-size: clamp(13px, 1vw, 15px);
+}
+
+.chaos-icon {
+  position: relative;
+  display: block;
+  width: 58px;
+  height: 58px;
+}
+
+.chaos-icon i {
+  position: absolute;
+  inset: 8px;
+  border: 2px solid #fff;
+  border-radius: 50% 42% 48% 45%;
+}
+
+.chaos-icon i:nth-child(1) {
+  transform: rotate(12deg) scale(0.94);
+}
+
+.chaos-icon i:nth-child(2) {
+  transform: rotate(56deg) scale(0.8, 1.05);
+}
+
+.chaos-icon i:nth-child(3) {
+  transform: rotate(103deg) scale(1.04, 0.76);
+}
+
+.chaos-icon i:nth-child(4) {
+  transform: rotate(151deg) scale(0.9, 1.1);
+}
+
+.chaos-icon i:nth-child(5) {
+  transform: rotate(205deg) scale(0.72, 0.92);
+}
+
+.currently-note {
+  position: relative;
+  justify-self: end;
+  width: min(100%, 360px);
+  margin-top: 10px;
+  padding: 18px 28px 28px;
+  background: #f2f2ed;
+  color: #080808;
+  rotate: -1deg;
+}
+
+.currently-note::before,
+.currently-note::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  content: "";
+  background:
+    linear-gradient(135deg, transparent 0 10px, #f2f2ed 11px) 0 0 / 22px 12px,
+    linear-gradient(225deg, transparent 0 10px, #f2f2ed 11px) 0 0 / 22px 12px;
+}
+
+.currently-note::before {
+  top: -11px;
+}
+
+.currently-note::after {
+  bottom: -11px;
+  transform: rotate(180deg);
+}
+
+.currently-tape {
+  top: -26px;
+  right: 48px;
+  rotate: 3deg;
+}
+
+.currently-note h2 {
+  color: var(--blue);
+  font-size: 19px;
+}
+
+.currently-note ul {
+  display: grid;
+  gap: 10px;
+  padding-left: 18px;
+  margin: 8px 0 20px;
+  font-size: 14px;
+}
+
+.currently-note li::marker {
+  content: "* ";
+}
+
+.currently-spark {
+  color: var(--blue);
+}
+
+.currently-note .doodle-text {
+  position: absolute;
+  right: 24px;
+  bottom: 18px;
+  max-width: 170px;
+  font-size: 16px;
+  line-height: 1.15;
+  rotate: -8deg;
+}
+
+.currently-note .doodle-text::after {
+  width: 108px;
+  margin: 4px 0 0 auto;
+}
+
+.about-contact {
+  position: relative;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 140px;
+  align-items: center;
+  gap: 28px;
+  min-height: 150px;
+  padding: 26px clamp(28px, 4vw, 56px);
+}
+
+.about-contact h2 {
+  font-size: clamp(24px, 2.2vw, 31px);
+}
+
+.about-contact h2::after {
+  width: 210px;
+  margin-top: 4px;
+}
+
+.about-contact .drawn-line {
+  display: none;
+}
+
+.about-contact address {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px clamp(26px, 4vw, 58px);
+  font-style: normal;
+}
+
+.about-contact address a,
+.about-contact address span {
+  display: inline-grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.about-contact address svg {
+  width: 26px;
+  height: 26px;
+}
+
+.about-globe {
+  justify-self: end;
+}
+
 .modal-backdrop {
   position: fixed;
   z-index: 50;
@@ -811,6 +1290,76 @@ h2 {
   .footer {
     grid-template-columns: 1fr 1fr;
   }
+
+  .about-back {
+    position: absolute;
+  }
+
+  .about-poster {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-top: 92px;
+  }
+
+  .about-title-spark {
+    right: auto;
+    left: min(62vw, 420px);
+  }
+
+  .about-story {
+    max-width: 520px;
+  }
+
+  .about-blue-notes {
+    margin-bottom: 32px;
+  }
+
+  .tools-card {
+    width: 100%;
+  }
+
+  .about-photo-column {
+    padding-top: 0;
+  }
+
+  .about-side {
+    grid-template-columns: 1fr;
+    padding-top: 0;
+  }
+
+  .about-side-note,
+  .currently-note {
+    justify-self: start;
+  }
+
+  .about-side-note {
+    text-align: left;
+  }
+
+  .about-side-note::after {
+    margin-left: 0;
+  }
+
+  .approach-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .currently-note {
+    width: min(100%, 520px);
+  }
+
+  .about-contact {
+    grid-template-columns: 1fr;
+  }
+
+  .about-contact address {
+    display: grid;
+    gap: 14px;
+  }
+
+  .about-globe {
+    justify-self: start;
+  }
 }
 
 @media (max-width: 720px) {
@@ -897,5 +1446,91 @@ h2 {
 
   .footer {
     align-items: start;
+  }
+
+  .about-page {
+    background: #020202;
+  }
+
+  .about-poster {
+    gap: 38px;
+    padding: 82px 22px 34px;
+  }
+
+  .about-title-row h1 {
+    font-size: clamp(48px, 16vw, 64px);
+  }
+
+  .about-title-spark {
+    left: auto;
+    right: 4px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .about-title-line {
+    margin-bottom: 34px;
+  }
+
+  .about-story {
+    gap: 22px;
+    font-size: 19px;
+  }
+
+  .about-blue-notes {
+    font-size: 17px;
+  }
+
+  .tools-card {
+    padding: 22px 18px;
+  }
+
+  .tools-card li {
+    grid-template-columns: minmax(0, 1fr) 54px;
+  }
+
+  .about-feature-polaroid {
+    width: min(100%, 390px);
+    padding: 14px 14px 62px;
+  }
+
+  .work-tags > div {
+    gap: 10px;
+  }
+
+  .work-tags span:not(.doodle-text) {
+    max-width: 100%;
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  .approach-list {
+    grid-template-columns: 1fr;
+  }
+
+  .approach-item {
+    grid-template-columns: 52px 26px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .approach-item > svg:first-child,
+  .chaos-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .currently-note {
+    padding: 18px 20px 86px;
+  }
+
+  .currently-note .doodle-text {
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .about-contact {
+    padding: 28px 22px 34px;
   }
 }
