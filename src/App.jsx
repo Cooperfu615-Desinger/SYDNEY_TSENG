@@ -194,8 +194,7 @@ function WorkCard({ work, onOpen }) {
         <Play size={28} fill="currentColor" />
       </button>
       <div className="work-meta">
-        <span>{work.category}</span>
-        <span>{work.role}</span>
+        <p>{work.description}</p>
       </div>
     </article>
   );
