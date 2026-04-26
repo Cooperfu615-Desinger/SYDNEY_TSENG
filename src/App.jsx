@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Howl } from "howler";
@@ -12,7 +12,6 @@ import {
   Instagram,
   Mail,
   MapPin,
-  Pause,
   Play,
   Power,
   Sparkle,
@@ -247,12 +246,8 @@ function SoundIcon({ type }) {
   return <Waves />;
 }
 
-function SoundLab({ playingId, onToggle }) {
+function SoundLab() {
   const [activeCategory, setActiveCategory] = useState(soundLabCategories[0].id);
-  const category = useMemo(
-    () => soundLabCategories.find((item) => item.id === activeCategory),
-    [activeCategory],
-  );
 
   return (
     <section className="dark-section sound-about-grid" id="sound-lab">
@@ -277,31 +272,6 @@ function SoundLab({ playingId, onToggle }) {
             </button>
           ))}
         </div>
-        <AnimatePresence mode="wait">
-          <motion.div
-            className="sample-panel"
-            key={category.id}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.22 }}
-          >
-            {category.samples.map((sample) => (
-              <button
-                className={`sample-row ${playingId === sample.id ? "playing" : ""}`}
-                key={sample.id}
-                onClick={() => onToggle(sample)}
-              >
-                {playingId === sample.id ? <Pause /> : <Play />}
-                <span>
-                  <strong>{sample.title}</strong>
-                  <small>{sample.subtitle}</small>
-                </span>
-                <Waveform active={playingId === sample.id} />
-              </button>
-            ))}
-          </motion.div>
-        </AnimatePresence>
       </div>
       <About />
     </section>
@@ -633,7 +603,7 @@ function HomePage() {
       />
       <main>
         <SelectedWorks onOpen={setActiveWork} />
-        <SoundLab playingId={playingId} onToggle={toggle} />
+        <SoundLab />
       </main>
       <Footer />
       <WorkModal

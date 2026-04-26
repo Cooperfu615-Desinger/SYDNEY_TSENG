@@ -125,6 +125,8 @@ video {
   object-fit: cover;
   object-position: center 20%;
   filter: grayscale(1) contrast(1.08);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.72) 9%, #000 21%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.72) 9%, #000 21%);
 }
 
 .hero-signature-name {
@@ -533,48 +535,6 @@ h2 {
   position: absolute;
   right: 16px;
   bottom: 18px;
-  color: var(--blue);
-}
-
-.sample-panel {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.sample-row {
-  display: grid;
-  grid-template-columns: 28px minmax(0, 1fr);
-  gap: 10px;
-  align-items: center;
-  min-height: 84px;
-  padding: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.04);
-  color: #fff;
-  text-align: left;
-  cursor: pointer;
-}
-
-.sample-row.playing {
-  border-color: var(--blue);
-  color: var(--blue);
-}
-
-.sample-row span {
-  display: grid;
-  gap: 4px;
-}
-
-.sample-row small {
-  color: #a8a8a8;
-  text-transform: uppercase;
-}
-
-.sample-row .waveform {
-  grid-column: 1 / -1;
-  justify-content: flex-start;
   color: var(--blue);
 }
 
@@ -1475,7 +1435,6 @@ h2 {
   }
 
   .sound-cards,
-  .sample-panel,
   .about-panel,
   .footer {
     grid-template-columns: 1fr;
