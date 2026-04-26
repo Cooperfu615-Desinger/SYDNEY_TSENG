@@ -132,7 +132,12 @@ function Header() {
         <a href={appPath("#sound-lab")}>Sound Lab</a>
         <a href={appPath("#contact")}>Contact</a>
       </nav>
-      <Sparkle className="header-spark" aria-hidden="true" />
+      <img
+        className="header-spark"
+        src={assetPath("/images/doodles/header-spark.svg")}
+        alt=""
+        aria-hidden="true"
+      />
     </header>
   );
 }
@@ -168,6 +173,11 @@ function Hero({ onSignaturePlay, signaturePlaying }) {
         initial={{ opacity: 0, scale: 1.02 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.9, ease: "easeOut" }}
+      />
+      <img
+        className="hero-signature-name"
+        src={assetPath("/images/doodles/sydney-tseng.svg")}
+        alt="Sydney Tseng signature"
       />
       <DoodleText className="go-classy">Go classy!</DoodleText>
       <a className="scroll-note" href="#work">
@@ -339,9 +349,7 @@ function Footer() {
           <MapPin /> Taipei, Taiwan
         </span>
       </address>
-      <div className="globe-doodle" aria-hidden="true">
-        <span>☺</span>
-      </div>
+      <img className="globe-doodle" src={assetPath("/images/doodles/globe-smile.svg")} alt="" aria-hidden="true" />
       <DoodleText className="thanks-note">Thanks for visiting!</DoodleText>
     </footer>
   );
@@ -381,6 +389,34 @@ function AboutApproachIcon({ type }) {
         <i key={index} />
       ))}
     </span>
+  );
+}
+
+function ToolIcon({ type }) {
+  const iconMap = {
+    logic: {
+      className: "tool-icon-wave",
+      src: "/images/doodles/tool-logic-wave.svg",
+    },
+    ai: {
+      className: "tool-icon-openai",
+      src: "/images/doodles/tool-openai.svg",
+    },
+    smile: {
+      className: "tool-icon-smile",
+      src: "/images/doodles/tool-curiosity-smile.svg",
+    },
+  };
+  const icon = iconMap[type] ?? iconMap.smile;
+
+  return (
+    <img
+      className={`tool-icon ${icon.className}`}
+      src={assetPath(icon.src)}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+    />
   );
 }
 
@@ -434,15 +470,15 @@ function AboutPage() {
             <ul>
               <li>
                 <span>→ Logic Pro X</span>
-                <Waveform active />
+                <ToolIcon type="logic" />
               </li>
               <li>
                 <span>→ AI</span>
-                <Sparkle aria-hidden="true" />
+                <ToolIcon type="ai" />
               </li>
               <li>
                 <span>→ Curiosity :P</span>
-                <span className="tool-smile">⌣</span>
+                <ToolIcon type="smile" />
               </li>
             </ul>
           </section>
@@ -537,9 +573,13 @@ function AboutPage() {
             <MapPin /> Taipei, Taiwan
           </span>
         </address>
-        <div className="globe-doodle about-globe" aria-hidden="true">
-          <span>☺</span>
-        </div>
+        <img
+          className="globe-doodle about-globe"
+          src={assetPath("/images/doodles/globe-smile.svg")}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        />
       </footer>
     </main>
   );

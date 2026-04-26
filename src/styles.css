@@ -83,7 +83,14 @@ video {
   transform: translateY(-1px);
 }
 
-.header-spark,
+.header-spark {
+  justify-self: center;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  animation: star-wiggle 3.4s ease-in-out infinite;
+}
+
 .blue-star {
   color: var(--blue);
   stroke-width: 3;
@@ -118,6 +125,17 @@ video {
   object-fit: cover;
   object-position: center 20%;
   filter: grayscale(1) contrast(1.08);
+}
+
+.hero-signature-name {
+  position: absolute;
+  z-index: 5;
+  left: clamp(520px, 43vw, 700px);
+  top: clamp(330px, 41vh, 450px);
+  width: clamp(142px, 13vw, 205px);
+  height: auto;
+  pointer-events: none;
+  rotate: -11deg;
 }
 
 .hero-copy {
@@ -679,18 +697,10 @@ h2 {
 }
 
 .globe-doodle {
-  display: grid;
-  place-items: center;
-  width: 118px;
-  height: 86px;
-  border: 2px solid var(--blue);
-  border-radius: 50%;
-  color: var(--blue);
-  font-family: "Permanent Marker", "Space Mono", monospace;
-  font-size: 34px;
-  background:
-    linear-gradient(90deg, transparent 48%, var(--blue) 49%, transparent 51%),
-    repeating-linear-gradient(0deg, transparent 0 15px, rgba(7, 87, 255, 0.8) 16px 17px, transparent 18px 31px);
+  display: block;
+  width: 142px;
+  height: auto;
+  object-fit: contain;
   transform: rotate(-10deg);
 }
 
@@ -786,7 +796,7 @@ h2 {
 
 .tools-card {
   width: min(100%, 390px);
-  padding: 28px 26px 30px;
+  padding: 28px 26px 34px;
   border: 1px solid rgba(255, 255, 255, 0.58);
   background: rgba(255, 255, 255, 0.02);
 }
@@ -813,7 +823,7 @@ h2 {
 
 .tools-card ul {
   display: grid;
-  gap: 20px;
+  gap: 18px;
   padding: 0;
   margin: 18px 0 0;
   list-style: none;
@@ -828,21 +838,30 @@ h2 {
   gap: 16px;
 }
 
-.tools-card svg,
-.tools-card .waveform,
-.tool-smile {
+.tool-icon {
   justify-self: end;
-  color: var(--blue);
+  width: 64px;
+  height: 54px;
+  object-fit: contain;
+  object-position: center;
 }
 
-.tools-card .waveform {
-  min-width: 54px;
-  height: 22px;
+.tool-icon-openai {
+  width: 58px;
+  height: 58px;
+  rotate: -5deg;
 }
 
-.tool-smile {
-  font-family: "Permanent Marker", "Space Mono", monospace;
-  font-size: 30px;
+.tool-icon-wave {
+  width: 72px;
+  height: 42px;
+}
+
+.tool-icon-smile {
+  width: 56px;
+  height: 56px;
+  rotate: -5deg;
+  transform: translateY(2px);
 }
 
 .about-photo-column {
@@ -1281,6 +1300,12 @@ h2 {
     height: 640px;
   }
 
+  .hero-signature-name {
+    left: min(46vw, 420px);
+    top: 440px;
+    width: 150px;
+  }
+
   .hero-copy {
     width: min(540px, 76vw);
     padding-top: 124px;
@@ -1408,6 +1433,12 @@ h2 {
     opacity: 0.94;
   }
 
+  .hero-signature-name {
+    left: 38vw;
+    top: 485px;
+    width: 122px;
+  }
+
   .go-classy {
     top: 405px;
     right: 16px;
@@ -1497,6 +1528,22 @@ h2 {
 
   .tools-card li {
     grid-template-columns: minmax(0, 1fr) 54px;
+  }
+
+  .tool-icon {
+    width: 48px;
+    height: 46px;
+  }
+
+  .tool-icon-wave {
+    width: 54px;
+    height: 32px;
+  }
+
+  .tool-icon-openai,
+  .tool-icon-smile {
+    width: 46px;
+    height: 46px;
   }
 
   .about-feature-polaroid {
