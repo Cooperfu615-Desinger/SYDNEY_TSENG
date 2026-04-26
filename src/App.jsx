@@ -145,50 +145,52 @@ function Hero({ onSignaturePlay, signaturePlaying }) {
   return (
     <section className="hero" id="top">
       <Header />
-      <div className="hero-copy">
-        <p className="eyebrow">
-          Sound designer
+      <div className="hero-stage">
+        <div className="hero-copy">
+          <p className="eyebrow">
+            Sound designer
+            <br />
+            for games &
+            <br />
+            digital experiences
+          </p>
+          <DrawnLine className="eyebrow-line" />
+          <h1>
+            I design
+            <br />
+            sound that
+            <br />
+            makes pixels
+            <br />
+            feel alive.
+          </h1>
+          <DrawnLine className="hero-underline" delay={0.25} />
+        </div>
+        <motion.img
+          className="hero-image"
+          src={assetPath("/images/hero/main.png")}
+          alt="Sydney Tseng smiling in a black and white portrait"
+          initial={{ opacity: 0, scale: 1.02 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+        />
+        <img
+          className="hero-signature-name"
+          src={assetPath("/images/doodles/sydney-tseng.svg")}
+          alt="Sydney Tseng signature"
+        />
+        <DoodleText className="go-classy">Go classy!</DoodleText>
+        <a className="scroll-note" href="#work">
+          <span>Scroll down</span>
+          <ArrowDown size={30} />
+        </a>
+        <DoodleCircle className="signature" onClick={onSignaturePlay}>
+          Signature
           <br />
-          for games &
-          <br />
-          digital experiences
-        </p>
-        <DrawnLine className="eyebrow-line" />
-        <h1>
-          I design
-          <br />
-          sound that
-          <br />
-          makes pixels
-          <br />
-          feel alive.
-        </h1>
-        <DrawnLine className="hero-underline" delay={0.25} />
+          Sound
+          <Waveform active={signaturePlaying} />
+        </DoodleCircle>
       </div>
-      <motion.img
-        className="hero-image"
-        src={assetPath("/images/hero/main.png")}
-        alt="Sydney Tseng smiling in a black and white portrait"
-        initial={{ opacity: 0, scale: 1.02 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-      />
-      <img
-        className="hero-signature-name"
-        src={assetPath("/images/doodles/sydney-tseng.svg")}
-        alt="Sydney Tseng signature"
-      />
-      <DoodleText className="go-classy">Go classy!</DoodleText>
-      <a className="scroll-note" href="#work">
-        <span>Scroll down</span>
-        <ArrowDown size={30} />
-      </a>
-      <DoodleCircle className="signature" onClick={onSignaturePlay}>
-        Signature
-        <br />
-        Sound
-        <Waveform active={signaturePlaying} />
-      </DoodleCircle>
     </section>
   );
 }

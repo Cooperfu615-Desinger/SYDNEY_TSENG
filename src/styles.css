@@ -98,9 +98,9 @@ video {
 }
 
 .hero {
+  --hero-scale: clamp(0.46, calc(100vw / 1440px), 1);
   position: relative;
-  min-height: 820px;
-  height: 86vh;
+  height: clamp(540px, calc(820px * var(--hero-scale)), 820px);
   overflow: hidden;
   background: var(--paper);
   border-bottom: 0;
@@ -115,13 +115,23 @@ video {
   pointer-events: none;
 }
 
+.hero-stage {
+  position: absolute;
+  top: 0;
+  left: max(50%, calc(720px * var(--hero-scale)));
+  width: 1440px;
+  height: 820px;
+  transform: translateX(-50%) scale(var(--hero-scale));
+  transform-origin: top center;
+}
+
 .hero-image {
   position: absolute;
   z-index: 1;
-  right: -7vw;
+  right: -100px;
   top: 64px;
-  width: min(76vw, 1080px);
-  height: calc(100% - 64px);
+  width: 1080px;
+  height: 756px;
   object-fit: cover;
   object-position: center 20%;
   filter: grayscale(1) contrast(1.08);
@@ -132,18 +142,20 @@ video {
 .hero-signature-name {
   position: absolute;
   z-index: 5;
-  left: clamp(520px, 43vw, 700px);
-  top: clamp(330px, 41vh, 450px);
-  width: clamp(142px, 13vw, 205px);
+  left: 620px;
+  top: 342px;
+  width: 188px;
   height: auto;
   pointer-events: none;
   rotate: -11deg;
 }
 
 .hero-copy {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 3;
-  width: min(560px, 52vw);
+  width: 560px;
   padding: 150px 0 0 42px;
 }
 
@@ -157,7 +169,7 @@ video {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(46px, 5vw, 78px);
+  font-size: 78px;
   line-height: 1.18;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -178,7 +190,7 @@ video {
 }
 
 .hero-underline {
-  width: min(410px, 42vw);
+  width: 410px;
   margin-top: -4px;
 }
 
@@ -194,10 +206,10 @@ video {
   position: absolute;
   z-index: 4;
   top: 142px;
-  right: 10vw;
+  right: 144px;
   max-width: 190px;
   rotate: -8deg;
-  font-size: clamp(34px, 4vw, 56px);
+  font-size: 56px;
 }
 
 .go-classy::after,
@@ -1233,6 +1245,11 @@ h2 {
 }
 
 @media (max-width: 980px) {
+  .hero {
+    --hero-scale: clamp(0.58, calc(100vw / 1120px), 0.78);
+    height: min(760px, calc(820px * var(--hero-scale)));
+  }
+
   .site-header {
     grid-template-columns: 180px 1fr;
     padding: 20px;
@@ -1245,31 +1262,6 @@ h2 {
 
   .header-spark {
     display: none;
-  }
-
-  .hero {
-    min-height: 760px;
-    height: auto;
-  }
-
-  .hero-image {
-    right: -22vw;
-    top: auto;
-    bottom: 0;
-    width: 92vw;
-    height: 640px;
-  }
-
-  .hero-signature-name {
-    left: min(46vw, 420px);
-    top: 440px;
-    width: 150px;
-  }
-
-  .hero-copy {
-    width: min(540px, 76vw);
-    padding-top: 124px;
-    padding-left: 24px;
   }
 
   .sound-about-grid {
@@ -1358,8 +1350,12 @@ h2 {
 }
 
 @media (max-width: 720px) {
+  .hero {
+    --hero-scale: clamp(0.46, calc(100vw / 720px), 0.58);
+    height: clamp(590px, calc((820px * var(--hero-scale)) + 160px), 700px);
+  }
+
   .site-header {
-    position: relative;
     grid-template-columns: 1fr;
     gap: 14px;
     background: var(--paper);
@@ -1371,51 +1367,8 @@ h2 {
     justify-content: space-between;
   }
 
-  .hero {
-    min-height: 860px;
-  }
-
-  .hero-copy {
-    width: auto;
-    padding: 24px 22px 0;
-  }
-
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  .hero-image {
-    right: -38vw;
-    top: auto;
-    bottom: 72px;
-    width: 128vw;
-    height: 550px;
-    opacity: 0.94;
-  }
-
-  .hero-signature-name {
-    left: 38vw;
-    top: 485px;
-    width: 122px;
-  }
-
-  .go-classy {
-    top: 405px;
-    right: 16px;
-    font-size: 34px;
-  }
-
   .scroll-note {
-    left: 24px;
-    bottom: 20px;
-  }
-
-  .signature {
-    right: 6px;
-    bottom: 12px;
-    width: 180px;
-    height: 112px;
-    font-size: 18px;
+    bottom: -190px;
   }
 
   .tap-note {
