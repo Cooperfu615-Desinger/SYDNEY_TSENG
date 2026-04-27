@@ -33,6 +33,7 @@ function DrawnLine({ className = "", delay = 0 }) {
     <motion.svg
       className={`drawn-line ${className}`}
       viewBox="0 0 220 28"
+      preserveAspectRatio="none"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}

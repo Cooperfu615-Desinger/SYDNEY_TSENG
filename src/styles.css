@@ -160,18 +160,18 @@ video {
 }
 
 .eyebrow {
-  margin: 0 0 56px;
+  margin: 0 0 46px;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1.42;
+  line-height: 1.25;
 }
 
 .hero h1 {
   margin: 0;
   font-size: 78px;
-  line-height: 1.18;
-  letter-spacing: 0;
+  line-height: 1.1;
+  letter-spacing: -1px;
   text-transform: uppercase;
 }
 
@@ -184,14 +184,14 @@ video {
 
 .eyebrow-line {
   position: absolute;
-  top: 242px;
+  top: 265px;
   left: 42px;
-  width: 110px;
+  width: 150px;
 }
 
 .hero-underline {
   width: 410px;
-  margin-top: -4px;
+  margin-top: -14px;
 }
 
 .doodle-text {
@@ -268,7 +268,7 @@ video {
   overflow: visible;
 }
 
-.doodle-circle > span {
+.doodle-circle>span {
   position: relative;
   z-index: 1;
   display: grid;
@@ -899,7 +899,7 @@ h2 {
   margin: 0 auto;
 }
 
-.work-tags > div {
+.work-tags>div {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -980,7 +980,7 @@ h2 {
   gap: 18px;
 }
 
-.approach-item > svg:first-child {
+.approach-item>svg:first-child {
   width: 58px;
   height: 58px;
   padding: 5px;
@@ -1216,20 +1216,24 @@ h2 {
 }
 
 @keyframes star-wiggle {
+
   0%,
   100% {
     transform: rotate(0deg) scale(1);
   }
+
   50% {
     transform: rotate(18deg) scale(1.08);
   }
 }
 
 @keyframes bob {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(8px);
   }
@@ -1239,6 +1243,7 @@ h2 {
   from {
     transform: scaleY(0.55);
   }
+
   to {
     transform: scaleY(1.6);
   }
@@ -1371,6 +1376,25 @@ h2 {
     bottom: -190px;
   }
 
+  .eyebrow {
+    margin: 15px 0 10px;
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .hero h1 {
+    margin: 10px 0 0;
+    font-size: 75px;
+    line-height: 100px;
+  }
+
+  .hero-underline {
+    width: 330px;
+    margin-top: -22px;
+    transform: translateY(-6px);
+  }
+
   .tap-note {
     display: none;
   }
@@ -1463,7 +1487,7 @@ h2 {
     padding: 14px 14px 62px;
   }
 
-  .work-tags > div {
+  .work-tags>div {
     gap: 10px;
   }
 
@@ -1484,7 +1508,7 @@ h2 {
     gap: 12px;
   }
 
-  .approach-item > svg:first-child,
+  .approach-item>svg:first-child,
   .chaos-icon {
     width: 48px;
     height: 48px;
