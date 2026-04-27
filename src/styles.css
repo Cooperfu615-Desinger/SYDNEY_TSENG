@@ -285,29 +285,6 @@ video {
   height: 100%;
 }
 
-.waveform {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  min-width: 86px;
-  height: 24px;
-}
-
-.waveform i {
-  width: 3px;
-  height: calc(5px + (var(--i) % 7) * 2px);
-  background: currentColor;
-  border-radius: 999px;
-  opacity: 0.9;
-  transform-origin: center;
-}
-
-.waveform.is-active i {
-  animation: pulse-line 0.55s ease-in-out infinite alternate;
-  animation-delay: calc(var(--i) * 0.045s);
-}
-
 .dark-section {
   background: #020202;
   color: #fff;
@@ -471,8 +448,8 @@ h2 {
 
 .sound-about-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(380px, 0.95fr);
-  gap: 34px;
+  grid-template-columns: 1fr;
+  gap: 32px;
   padding: 22px clamp(22px, 4vw, 64px) 48px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.22);
 }
@@ -496,69 +473,81 @@ h2 {
 
 .sound-cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 18px);
 }
 
 .sound-card {
   position: relative;
   display: grid;
-  min-height: 250px;
-  padding: 26px 22px 18px;
+  justify-items: center;
+  align-content: center;
+  min-height: clamp(190px, 16vw, 250px);
+  padding: 24px 14px 20px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   background: #050505;
   color: #fff;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
-  transition: border 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .sound-card:hover,
-.sound-card.active {
+.sound-card.is-active {
   border-color: var(--blue);
-  color: var(--blue);
+  box-shadow: 0 0 0 1px rgba(7, 87, 255, 0.6);
   transform: translateY(-2px);
 }
 
-.sound-card svg {
-  width: 42px;
-  height: 42px;
-  margin-bottom: 14px;
-  stroke-width: 1.8;
+.sound-card img {
+  width: clamp(62px, 6vw, 94px);
+  height: clamp(62px, 6vw, 94px);
+  margin-bottom: 18px;
+  object-fit: contain;
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.sound-card:hover img,
+.sound-card.is-active img {
+  transform: rotate(-2deg) scale(1.04);
 }
 
 .sound-card strong {
   color: #fff;
+  font-size: clamp(15px, 1.35vw, 22px);
+  line-height: 1.1;
   text-transform: uppercase;
 }
 
 .sound-card span {
-  align-self: start;
-  max-width: 150px;
-  margin-top: 16px;
-  color: #e5e5e5;
-  font-size: 13px;
-}
-
-.sound-card .waveform {
-  justify-content: flex-start;
-  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--blue);
+  font-size: clamp(12px, 1vw, 16px);
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .card-arrow {
-  position: absolute;
-  right: 16px;
-  bottom: 18px;
+  width: 1.15em;
+  height: 1.15em;
   color: var(--blue);
+  stroke-width: 2.2;
 }
 
 .about-panel {
   display: grid;
-  grid-template-columns: 0.85fr minmax(220px, 0.9fr);
+  grid-template-columns: minmax(240px, 0.8fr) minmax(220px, 0.75fr);
   gap: 26px;
+  align-items: center;
+  width: min(100%, 760px);
   min-width: 0;
-  padding-left: 34px;
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 .about-copy p {
@@ -1245,16 +1234,6 @@ h2 {
   }
 }
 
-@keyframes pulse-line {
-  from {
-    transform: scaleY(0.55);
-  }
-
-  to {
-    transform: scaleY(1.6);
-  }
-}
-
 @media (max-width: 980px) {
   .hero {
     --hero-scale: clamp(0.58, calc(100vw / 1120px), 0.78);
@@ -1277,6 +1256,10 @@ h2 {
 
   .sound-about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sound-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .about-panel {
@@ -1633,10 +1616,13 @@ h2 {
     font-size: 13px;
   }
 
-  .sound-cards,
   .about-panel,
   .footer {
     grid-template-columns: 1fr;
+  }
+
+  .sound-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .sound-about-grid {
@@ -1664,46 +1650,29 @@ h2 {
   }
 
   .sound-card {
-    grid-template-columns: 58px minmax(0, 1fr) 28px;
-    gap: 6px 18px;
-    align-items: start;
-    min-height: 0;
-    padding: 22px 18px;
+    min-height: 168px;
+    padding: 20px 12px 18px;
   }
 
-  .sound-card svg {
-    grid-column: 1;
-    grid-row: span 2;
-    width: 40px;
-    height: 40px;
-    margin: 0;
-    color: var(--blue);
+  .sound-card img {
+    width: 66px;
+    height: 66px;
+    margin-bottom: 14px;
   }
 
   .sound-card strong {
-    grid-column: 2;
-    grid-row: 1;
-    align-self: center;
+    font-size: clamp(15px, 4.2vw, 18px);
   }
 
   .sound-card span {
-    grid-column: 2;
-    grid-row: 2;
-    max-width: 170px;
-    margin-top: 8px;
-    font-size: 13px;
+    margin-top: 10px;
+    font-size: 12px;
   }
 
-  .sound-card .waveform {
-    display: none;
-  }
-
-  .card-arrow {
-    position: static;
-    grid-column: 3;
-    grid-row: 1 / span 2;
-    align-self: end;
-    justify-self: end;
+  .sound-card:nth-child(5) {
+    grid-column: 1 / -1;
+    width: min(100%, 50%);
+    justify-self: center;
   }
 
   .footer {

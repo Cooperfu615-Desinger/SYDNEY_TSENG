@@ -14,10 +14,7 @@ import {
   MapPin,
   Menu,
   Play,
-  Power,
   Sparkle,
-  Star,
-  Waves,
   X,
 } from "lucide-react";
 import { soundLabCategories, works } from "./data/siteData.js";
@@ -77,16 +74,6 @@ function DoodleCircle({ children, className = "", onClick }) {
       </svg>
       <span>{children}</span>
     </motion.button>
-  );
-}
-
-function Waveform({ active = false }) {
-  return (
-    <span className={`waveform ${active ? "is-active" : ""}`} aria-hidden="true">
-      {Array.from({ length: 16 }).map((_, index) => (
-        <i key={index} style={{ "--i": index }} />
-      ))}
-    </span>
   );
 }
 
@@ -294,15 +281,7 @@ function SelectedWorks({ onOpen, onPlayAudio, playingId }) {
   );
 }
 
-function SoundIcon({ type }) {
-  if (type === "power") return <Power />;
-  if (type === "star") return <Star />;
-  return <Waves />;
-}
-
-function SoundLab() {
-  const [activeCategory, setActiveCategory] = useState(soundLabCategories[0].id);
-
+function SoundLab({ onPlayAudio, playingId }) {
   return (
     <section className="dark-section sound-about-grid" id="sound-lab">
       <div className="sound-lab">
@@ -314,15 +293,18 @@ function SoundLab() {
         <div className="sound-cards">
           {soundLabCategories.map((item) => (
             <button
-              className={`sound-card ${activeCategory === item.id ? "active" : ""}`}
+              className={`sound-card ${playingId === `soundlab-${item.id}` ? "is-active" : ""}`}
               key={item.id}
-              onClick={() => setActiveCategory(item.id)}
+              type="button"
+              onClick={() => onPlayAudio({ id: `soundlab-${item.id}`, audio: item.audio })}
+              aria-label={`Play ${item.title}`}
             >
-              <SoundIcon type={item.icon} />
+              <img src={item.image} alt="" aria-hidden="true" loading="lazy" />
               <strong>{item.title}</strong>
-              <span>{item.description}</span>
-              <Waveform active={activeCategory === item.id} />
-              <ArrowRight className="card-arrow" />
+              <span>
+                Play now
+                <ArrowRight className="card-arrow" aria-hidden="true" />
+              </span>
             </button>
           ))}
         </div>
@@ -659,7 +641,7 @@ function HomePage() {
       <Hero />
       <main>
         <SelectedWorks onOpen={setActiveWork} onPlayAudio={toggle} playingId={playingId} />
-        <SoundLab />
+        <SoundLab onPlayAudio={toggle} playingId={playingId} />
         <CurrentlyNote className="home-currently-note" />
       </main>
       <Footer />

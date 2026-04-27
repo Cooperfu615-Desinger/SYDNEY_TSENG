@@ -44,81 +44,33 @@ export const works = [
 
 export const soundLabCategories = [
   {
-    id: "click-spin",
-    title: "Click / Spin",
-    icon: "power",
-    description: "Tactile starts that set everything in motion.",
-    samples: [
-      {
-        id: "bubble-bobble",
-        title: "Bubble Bobble",
-        subtitle: "Under the sea",
-        audio: assetPath("/audio/1-bubble_bobble.wav"),
-      },
-      {
-        id: "japanese-artist-collab",
-        title: "Japanese Artist Collab",
-        subtitle: "Yummy candy",
-        audio: assetPath("/audio/3-japanese_artist_collab.mp3"),
-      },
-      {
-        id: "songkran-festival",
-        title: "Songkran Festival",
-        subtitle: "The Great Aztec",
-        audio: assetPath("/audio/4-thailand-exclusive-songkran-festival.mp3"),
-      },
-    ],
+    id: "candy-land",
+    title: "Candy Land",
+    image: assetPath("/images/soundlab/candy.png"),
+    audio: assetPath("/audio/soundlab/candy.mp3"),
   },
   {
-    id: "reward",
-    title: "Reward",
-    icon: "star",
-    description: "Moments that feel good and keep you coming back.",
-    samples: [
-      {
-        id: "reward-pop",
-        title: "Reward Pop",
-        subtitle: "Bright win",
-        audio: assetPath("/audio/3-japanese_artist_collab.mp3"),
-      },
-      {
-        id: "coin-smile",
-        title: "Coin Smile",
-        subtitle: "Small prize",
-        audio: assetPath("/audio/1-bubble_bobble.wav"),
-      },
-      {
-        id: "festival-bonus",
-        title: "Festival Bonus",
-        subtitle: "Big moment",
-        audio: assetPath("/audio/4-thailand-exclusive-songkran-festival.mp3"),
-      },
-    ],
+    id: "tribal-vibes",
+    title: "Tribal Vibes",
+    image: assetPath("/images/soundlab/tribe.png"),
+    audio: assetPath("/audio/soundlab/tribe.mp3"),
   },
   {
-    id: "transition",
-    title: "Transition",
-    icon: "waves",
-    description: "Smooth moves that guide the player forward.",
-    samples: [
-      {
-        id: "soft-swipe",
-        title: "Soft Swipe",
-        subtitle: "Menu move",
-        audio: assetPath("/audio/1-bubble_bobble.wav"),
-      },
-      {
-        id: "scene-shift",
-        title: "Scene Shift",
-        subtitle: "New space",
-        audio: assetPath("/audio/3-japanese_artist_collab.mp3"),
-      },
-      {
-        id: "night-cut",
-        title: "Night Cut",
-        subtitle: "Event jump",
-        audio: assetPath("/audio/4-thailand-exclusive-songkran-festival.mp3"),
-      },
-    ],
+    id: "pinata-party",
+    title: "Piñata Party",
+    image: assetPath("/images/soundlab/pinata.png"),
+    audio: assetPath("/audio/soundlab/pinata.mp3"),
+  },
+  {
+    id: "winter-magic",
+    title: "Winter Magic",
+    image: assetPath("/images/soundlab/xmastree.png"),
+    audio: assetPath("/audio/soundlab/xmastree.mp3"),
+  },
+  {
+    id: "spooky-season",
+    title: "Spooky Season",
+    image: assetPath("/images/soundlab/halloween.png"),
+    audio: assetPath("/audio/soundlab/halloween.mp3"),
   },
 ];
