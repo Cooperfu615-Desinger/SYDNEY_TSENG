@@ -12,6 +12,7 @@ import {
   Instagram,
   Mail,
   MapPin,
+  Menu,
   Play,
   Power,
   Sparkle,
@@ -121,6 +122,9 @@ function useAudioEngine() {
 }
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="site-header">
       <a href={appPath("#top")} className="brand" aria-label="Sydney Tseng home">
@@ -138,6 +142,43 @@ function Header() {
         alt=""
         aria-hidden="true"
       />
+      <button className="menu-toggle" type="button" onClick={() => setMenuOpen(true)} aria-label="Open menu">
+        <Menu />
+      </button>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="mobile-menu-card">
+              <div className="mobile-menu-top">
+                <span>Sydney Tseng</span>
+                <img src={assetPath("/images/doodles/header-spark.svg")} alt="" aria-hidden="true" />
+                <button type="button" onClick={closeMenu} aria-label="Close menu">
+                  <X />
+                </button>
+              </div>
+              <nav aria-label="Mobile navigation">
+                <a href={appPath("#work")} onClick={closeMenu}>
+                  Work
+                </a>
+                <a href={appPath("about")} onClick={closeMenu}>
+                  About
+                </a>
+                <a href={appPath("#sound-lab")} onClick={closeMenu}>
+                  Sound Lab
+                </a>
+                <a href={appPath("#contact")} onClick={closeMenu}>
+                  Contact
+                </a>
+              </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
@@ -303,6 +344,27 @@ function About() {
         <img src={assetPath("/images/about/side.jpeg")} alt="Sydney in a recording studio" />
         <figcaption>:-)</figcaption>
       </motion.figure>
+    </section>
+  );
+}
+
+function CurrentlyNote({ className = "" }) {
+  return (
+    <section className={`currently-note ${className}`} aria-labelledby="home-currently-title">
+      <span className="currently-tape" />
+      <h2 id="home-currently-title">Currently</h2>
+      <DrawnLine />
+      <ul>
+        <li>crafting playful and addictive sound experiences</li>
+        <li>exploring textures, voices, and experimental stuff</li>
+        <li>leveling up my game every day</li>
+      </ul>
+      <Sparkle className="currently-spark" aria-hidden="true" />
+      <DoodleText>
+        Let’s create
+        <br />
+        something cool !
+      </DoodleText>
     </section>
   );
 }
@@ -513,22 +575,7 @@ function AboutPage() {
             </div>
           </section>
 
-          <section className="currently-note" aria-labelledby="currently-title">
-            <span className="currently-tape" />
-            <h2 id="currently-title">Currently</h2>
-            <DrawnLine />
-            <ul>
-              <li>crafting playful and addictive sound experiences</li>
-              <li>exploring textures, voices, and experimental stuff</li>
-              <li>leveling up my game every day</li>
-            </ul>
-            <Sparkle className="currently-spark" aria-hidden="true" />
-            <DoodleText>
-              Let’s create
-              <br />
-              something cool !
-            </DoodleText>
-          </section>
+          <CurrentlyNote />
         </aside>
       </section>
 
@@ -607,6 +654,7 @@ function HomePage() {
       <main>
         <SelectedWorks onOpen={setActiveWork} />
         <SoundLab />
+        <CurrentlyNote className="home-currently-note" />
       </main>
       <Footer />
       <WorkModal
