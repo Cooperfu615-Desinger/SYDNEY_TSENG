@@ -8,6 +8,7 @@ export const works = [
     role: "Sound Design",
     description: "8-bit sound system under strict brand constraints.",
     image: assetPath("/images/works/dancing-queen-cover.png"),
+    audio: assetPath("/audio/1-bubble_bobble.wav"),
     video: assetPath("/video/jk8-commercial.mov"),
   },
   {
@@ -17,6 +18,7 @@ export const works = [
     role: "Sound Design",
     description: "Full audio system aligned with brand identity.",
     image: assetPath("/images/works/wings-of-desire-cover.png"),
+    audio: assetPath("/audio/3-japanese_artist_collab.mp3"),
     video: assetPath("/video/jk8-commercial.mov"),
   },
   {
@@ -35,6 +37,7 @@ export const works = [
     role: "Sound Design",
     description: "Thai-inspired music shaped by local sound culture.",
     image: assetPath("/images/works/saturday-event-djs-cover.png"),
+    audio: assetPath("/audio/4-thailand-exclusive-songkran-festival.mp3"),
     video: assetPath("/video/jk8-commercial.mov"),
   },
 ];

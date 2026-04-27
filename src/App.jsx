@@ -183,7 +183,7 @@ function Header() {
   );
 }
 
-function Hero({ onSignaturePlay, signaturePlaying }) {
+function Hero() {
   return (
     <section className="hero" id="top">
       <Header />
@@ -226,24 +226,34 @@ function Hero({ onSignaturePlay, signaturePlaying }) {
           <span>Scroll down</span>
           <ArrowDown size={30} />
         </a>
-        <DoodleCircle className="signature" onClick={onSignaturePlay}>
-          Signature
-          <br />
-          Sound
-          <Waveform active={signaturePlaying} />
-        </DoodleCircle>
       </div>
     </section>
   );
 }
 
-function WorkCard({ work, onOpen }) {
+function WorkCard({ work, onOpen, onPlayAudio, playingId }) {
+  const audioId = `work-${work.id}`;
+  const isAudioPlaying = playingId === audioId;
+
+  const handlePlay = () => {
+    if (work.audio) {
+      onPlayAudio({ id: audioId, audio: work.audio });
+      return;
+    }
+
+    onOpen(work);
+  };
+
   return (
     <article className="work-card">
       <img src={work.image} alt={`${work.title} project cover`} />
       <div className="work-scrim" />
       <DoodleText className="work-title">{work.title}</DoodleText>
-      <button className="play-button" onClick={() => onOpen(work)} aria-label={`Play ${work.title}`}>
+      <button
+        className={`play-button${isAudioPlaying ? " is-active" : ""}`}
+        onClick={handlePlay}
+        aria-label={`Play ${work.title}`}
+      >
         <Play size={28} fill="currentColor" />
       </button>
       <div className="work-meta">
@@ -253,7 +263,7 @@ function WorkCard({ work, onOpen }) {
   );
 }
 
-function SelectedWorks({ onOpen }) {
+function SelectedWorks({ onOpen, onPlayAudio, playingId }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", containScroll: "trimSnaps" });
 
   return (
@@ -271,7 +281,7 @@ function SelectedWorks({ onOpen }) {
           <div className="embla-container">
             {works.map((work) => (
               <div className="embla-slide" key={work.id}>
-                <WorkCard work={work} onOpen={onOpen} />
+                <WorkCard work={work} onOpen={onOpen} onPlayAudio={onPlayAudio} playingId={playingId} />
               </div>
             ))}
           </div>
@@ -642,17 +652,13 @@ function WorkModal({ work, onClose }) {
 
 function HomePage() {
   const [activeWork, setActiveWork] = useState(null);
-  const signatureSample = soundLabCategories[0].samples[0];
   const { playingId, toggle, stop } = useAudioEngine();
 
   return (
     <>
-      <Hero
-        onSignaturePlay={() => toggle({ ...signatureSample, id: "signature-sound" })}
-        signaturePlaying={playingId === "signature-sound"}
-      />
+      <Hero />
       <main>
-        <SelectedWorks onOpen={setActiveWork} />
+        <SelectedWorks onOpen={setActiveWork} onPlayAudio={toggle} playingId={playingId} />
         <SoundLab />
         <CurrentlyNote className="home-currently-note" />
       </main>

@@ -285,16 +285,6 @@ video {
   height: 100%;
 }
 
-.signature {
-  position: absolute;
-  z-index: 5;
-  right: 58px;
-  bottom: 32px;
-  width: 230px;
-  height: 138px;
-  font-size: 23px;
-}
-
 .waveform {
   display: inline-flex;
   align-items: center;
@@ -429,6 +419,10 @@ h2 {
 .play-button:hover {
   background: var(--blue);
   transform: scale(1.05);
+}
+
+.play-button.is-active {
+  background: var(--blue);
 }
 
 .work-meta {
@@ -1533,8 +1527,7 @@ h2 {
     border-bottom-width: 3px;
   }
 
-  .hero-signature-name,
-  .signature {
+  .hero-signature-name {
     display: none;
   }
 
