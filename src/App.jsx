@@ -203,11 +203,6 @@ function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
         />
-        <img
-          className="hero-signature-name"
-          src={assetPath("/images/doodles/sydney-tseng.svg")}
-          alt="Sydney Tseng signature"
-        />
         <DoodleText className="go-classy">Go classy!</DoodleText>
         <a className="scroll-note" href="#work">
           <span>Scroll down</span>
@@ -251,19 +246,21 @@ function WorkCard({ work, onOpen, onPlayAudio, playingId }) {
 }
 
 function SelectedWorks({ onOpen, onPlayAudio, playingId }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", containScroll: "trimSnaps" });
+  const [emblaRef] = useEmblaCarousel({ align: "start", containScroll: "trimSnaps" });
 
   return (
     <section className="dark-section works-section" id="work">
       <div className="section-title-row">
         <h2>Selected Works</h2>
-        <Sparkle className="blue-star" aria-hidden="true" />
+        <img
+          className="blue-star"
+          src={assetPath("/images/doodles/header-spark.svg")}
+          alt=""
+          aria-hidden="true"
+        />
         <DoodleText className="tap-note">Tap to play</DoodleText>
       </div>
       <div className="carousel-wrap">
-        <button className="carousel-btn prev" onClick={() => emblaApi?.scrollPrev()} aria-label="Previous work">
-          <ArrowLeft />
-        </button>
         <div className="embla" ref={emblaRef}>
           <div className="embla-container">
             {works.map((work) => (
@@ -273,9 +270,6 @@ function SelectedWorks({ onOpen, onPlayAudio, playingId }) {
             ))}
           </div>
         </div>
-        <button className="carousel-btn next" onClick={() => emblaApi?.scrollNext()} aria-label="Next work">
-          <ArrowRight />
-        </button>
       </div>
     </section>
   );

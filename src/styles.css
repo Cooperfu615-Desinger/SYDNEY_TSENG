@@ -101,6 +101,9 @@ video {
 
 .blue-star {
   color: var(--blue);
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
   stroke-width: 3;
   animation: star-wiggle 3.4s ease-in-out infinite;
 }
@@ -145,17 +148,6 @@ video {
   filter: grayscale(1) contrast(1.08);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.72) 9%, #000 21%);
   mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.72) 9%, #000 21%);
-}
-
-.hero-signature-name {
-  position: absolute;
-  z-index: 5;
-  left: 620px;
-  top: 342px;
-  width: 188px;
-  height: auto;
-  pointer-events: none;
-  rotate: -11deg;
 }
 
 .hero-copy {
@@ -328,37 +320,36 @@ h2 {
 
 .embla {
   overflow: hidden;
-  padding: 0 18px;
+  padding: 0;
 }
 
 .embla-container {
   display: flex;
-  gap: 32px;
+  gap: clamp(10px, 1.2vw, 18px);
 }
 
 .embla-slide {
-  min-width: 265px;
-  flex: 0 0 clamp(238px, 21vw, 320px);
+  min-width: 250px;
+  flex: 0 0 clamp(260px, 24vw, 360px);
 }
 
 .work-card {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 0.86;
-  border: 1px solid rgba(255, 255, 255, 0.48);
-  background: #111;
+  aspect-ratio: 1;
+  background: #050505;
 }
 
 .work-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   filter: grayscale(1) contrast(1.08);
   transition: transform 0.45s ease, filter 0.45s ease;
 }
 
 .work-card:hover img {
-  transform: scale(1.04);
+  transform: scale(1.015);
   filter: grayscale(1) contrast(1.18) brightness(0.86);
 }
 
@@ -418,34 +409,6 @@ h2 {
   margin: 0;
 }
 
-.carousel-btn {
-  position: absolute;
-  z-index: 2;
-  top: 44%;
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 64px;
-  border: 0;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-}
-
-.carousel-btn svg {
-  width: 38px;
-  height: 38px;
-  stroke-width: 2.5;
-}
-
-.carousel-btn.prev {
-  left: -34px;
-}
-
-.carousel-btn.next {
-  right: -34px;
-}
-
 .sound-about-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -500,8 +463,8 @@ h2 {
 }
 
 .sound-card img {
-  width: clamp(62px, 6vw, 94px);
-  height: clamp(62px, 6vw, 94px);
+  width: clamp(93px, 9vw, 141px);
+  height: clamp(93px, 9vw, 141px);
   margin-bottom: 18px;
   object-fit: contain;
   transform-origin: center;
@@ -1510,10 +1473,6 @@ h2 {
     border-bottom-width: 3px;
   }
 
-  .hero-signature-name {
-    display: none;
-  }
-
   .scroll-note {
     position: relative;
     order: 3;
@@ -1566,10 +1525,6 @@ h2 {
     font-size: 16px;
   }
 
-  .carousel-btn {
-    display: none;
-  }
-
   .embla {
     overflow: visible;
     padding: 0;
@@ -1577,7 +1532,7 @@ h2 {
 
   .embla-container {
     display: grid;
-    gap: 14px;
+    gap: 12px;
   }
 
   .embla-slide {
@@ -1604,7 +1559,7 @@ h2 {
   }
 
   .work-card {
-    aspect-ratio: 0.9;
+    aspect-ratio: 1;
   }
 
   .work-title {
@@ -1650,13 +1605,13 @@ h2 {
   }
 
   .sound-card {
-    min-height: 168px;
+    min-height: 198px;
     padding: 20px 12px 18px;
   }
 
   .sound-card img {
-    width: 66px;
-    height: 66px;
+    width: 99px;
+    height: 99px;
     margin-bottom: 14px;
   }
 
