@@ -504,10 +504,10 @@ h2 {
 
 .about-panel {
   display: grid;
-  grid-template-columns: minmax(260px, 0.68fr) minmax(660px, 1.32fr);
+  grid-template-columns: minmax(260px, 0.58fr) minmax(900px, 1.42fr);
   gap: clamp(26px, 4vw, 58px);
   align-items: start;
-  width: min(100%, 1240px);
+  width: min(100%, 1360px);
   min-width: 0;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.22);
@@ -555,9 +555,10 @@ h2 {
 
 .about-polaroids {
   display: grid;
-  grid-template-columns: repeat(3, minmax(180px, 1fr));
-  gap: clamp(12px, 2vw, 28px);
+  grid-template-columns: repeat(3, minmax(260px, 260px));
+  gap: clamp(32px, 5vw, 72px);
   align-items: start;
+  justify-content: center;
   min-width: 0;
 }
 
@@ -1259,6 +1260,7 @@ h2 {
 
   .about-polaroids {
     grid-template-columns: repeat(2, minmax(210px, 1fr));
+    gap: clamp(28px, 5vw, 52px);
   }
 
   .polaroid-tertiary {
