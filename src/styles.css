@@ -504,10 +504,10 @@ h2 {
 
 .about-panel {
   display: grid;
-  grid-template-columns: minmax(260px, 0.75fr) minmax(480px, 1.25fr);
+  grid-template-columns: minmax(260px, 0.68fr) minmax(660px, 1.32fr);
   gap: clamp(26px, 4vw, 58px);
   align-items: start;
-  width: min(100%, 1080px);
+  width: min(100%, 1240px);
   min-width: 0;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.22);
@@ -555,7 +555,7 @@ h2 {
 
 .about-polaroids {
   display: grid;
-  grid-template-columns: repeat(2, minmax(210px, 1fr));
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
   gap: clamp(12px, 2vw, 28px);
   align-items: start;
   min-width: 0;
@@ -563,9 +563,9 @@ h2 {
 
 .polaroid {
   position: relative;
-  width: min(100%, 300px);
+  width: min(100%, 260px);
   margin: 0 auto;
-  padding: 16px 16px 48px;
+  padding: 14px 14px 42px;
   background: #f2f2ec;
   color: var(--blue);
   box-shadow: 0 15px 32px rgba(0, 0, 0, 0.35);
@@ -580,6 +580,11 @@ h2 {
   rotate: -5deg;
 }
 
+.polaroid-tertiary {
+  margin-top: 12px;
+  rotate: 4deg;
+}
+
 .polaroid img {
   width: 100%;
   aspect-ratio: 0.82;
@@ -590,10 +595,10 @@ h2 {
 
 .polaroid figcaption {
   position: absolute;
-  right: 22px;
-  bottom: 8px;
+  right: 18px;
+  bottom: 6px;
   font-family: "Permanent Marker", "Space Mono", monospace;
-  font-size: 34px;
+  font-size: 30px;
 }
 
 .tape {
@@ -1256,6 +1261,12 @@ h2 {
     grid-template-columns: repeat(2, minmax(210px, 1fr));
   }
 
+  .polaroid-tertiary {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: 0;
+  }
+
   .footer {
     grid-template-columns: 1fr 1fr;
   }
@@ -1607,6 +1618,10 @@ h2 {
     margin-top: 28px;
   }
 
+  .polaroid-tertiary {
+    grid-column: auto;
+  }
+
   .sound-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1707,10 +1722,17 @@ h2 {
   .polaroid {
     width: min(88%, 310px);
     margin-top: 0;
+    padding: 16px 16px 48px;
   }
 
   .polaroid-secondary {
     margin-top: 0;
+  }
+
+  .polaroid figcaption {
+    right: 22px;
+    bottom: 8px;
+    font-size: 34px;
   }
 
   .home-currently-note {

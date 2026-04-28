@@ -328,7 +328,7 @@ function About() {
           transition={{ type: "spring", stiffness: 220, damping: 17 }}
         >
           <span className="tape" />
-          <img src={assetPath("/images/about/side_2.jpeg")} alt="Sydney in a recording studio" />
+          <img src={assetPath("/images/about/side.jpeg")} alt="Sydney in a recording studio" />
           <figcaption>:-)</figcaption>
         </motion.figure>
         <motion.figure
@@ -337,7 +337,16 @@ function About() {
           transition={{ type: "spring", stiffness: 220, damping: 17 }}
         >
           <span className="tape" />
-          <img src={assetPath("/images/about/side.jpeg")} alt="Sydney in a recording studio" />
+          <img src={assetPath("/images/about/side_2.jpeg")} alt="Sydney in a recording studio" />
+          <figcaption>:-)</figcaption>
+        </motion.figure>
+        <motion.figure
+          className="polaroid polaroid-tertiary"
+          whileHover={{ rotate: -1, y: -4 }}
+          transition={{ type: "spring", stiffness: 220, damping: 17 }}
+        >
+          <span className="tape" />
+          <img src={assetPath("/images/about/side_3.jpeg")} alt="Sydney in a recording studio" />
           <figcaption>:-)</figcaption>
         </motion.figure>
       </div>
