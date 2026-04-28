@@ -321,15 +321,26 @@ function About() {
         </p>
         <a className="outline-button" href={appPath("about")}>More about me</a>
       </div>
-      <motion.figure
-        className="polaroid"
-        whileHover={{ rotate: -1.5, y: -4 }}
-        transition={{ type: "spring", stiffness: 220, damping: 17 }}
-      >
-        <span className="tape" />
-        <img src={assetPath("/images/about/side.jpeg")} alt="Sydney in a recording studio" />
-        <figcaption>:-)</figcaption>
-      </motion.figure>
+      <div className="about-polaroids" aria-label="Sydney studio photos">
+        <motion.figure
+          className="polaroid polaroid-primary"
+          whileHover={{ rotate: -1.5, y: -4 }}
+          transition={{ type: "spring", stiffness: 220, damping: 17 }}
+        >
+          <span className="tape" />
+          <img src={assetPath("/images/about/side_2.jpeg")} alt="Sydney in a recording studio" />
+          <figcaption>:-)</figcaption>
+        </motion.figure>
+        <motion.figure
+          className="polaroid polaroid-secondary"
+          whileHover={{ rotate: 1.5, y: -4 }}
+          transition={{ type: "spring", stiffness: 220, damping: 17 }}
+        >
+          <span className="tape" />
+          <img src={assetPath("/images/about/side.jpeg")} alt="Sydney in a recording studio" />
+          <figcaption>:-)</figcaption>
+        </motion.figure>
+      </div>
     </section>
   );
 }
