@@ -9,9 +9,7 @@ import {
   Check,
   Crosshair,
   Heart,
-  Instagram,
   Mail,
-  MapPin,
   Menu,
   Play,
   Sparkle,
@@ -21,6 +19,7 @@ import { soundLabCategories, works } from "./data/siteData.js";
 import { appPath, assetPath } from "./utils/assets.js";
 
 const blue = "#0757ff";
+const formspreeEndpoint = "https://formspree.io/f/mzdynnjj";
 
 function DoodleText({ children, className = "" }) {
   return <span className={`doodle-text ${className}`}>{children}</span>;
@@ -375,25 +374,124 @@ function CurrentlyNote({ className = "" }) {
   );
 }
 
-function Footer() {
+function ContactModal({ open, onClose }) {
+  const [status, setStatus] = useState("idle");
+  const [feedback, setFeedback] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setStatus("sending");
+    setFeedback("");
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      form.reset();
+      setStatus("sent");
+      setFeedback("Thanks! I’ll get back to you soon.");
+    } catch {
+      setStatus("error");
+      setFeedback("Something went wrong. Please try again.");
+    }
+  };
+
+  const handleClose = () => {
+    setStatus("idle");
+    setFeedback("");
+    onClose();
+  };
+
   return (
-    <footer className="footer" id="contact">
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="modal-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={handleClose}
+        >
+          <motion.div
+            className="contact-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-modal-title"
+            initial={{ y: 28, opacity: 0, scale: 0.98 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 18, opacity: 0, scale: 0.98 }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button className="close-button" type="button" onClick={handleClose} aria-label="Close contact form">
+              <X />
+            </button>
+            <h2 id="contact-modal-title">Let&apos;s make some noise</h2>
+            <DrawnLine />
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <label>
+                Email
+                <input type="email" name="email" autoComplete="email" required />
+              </label>
+              <label>
+                Subject
+                <input type="text" name="subject" required />
+              </label>
+              <label>
+                Message
+                <textarea name="message" rows="6" required />
+              </label>
+              <label className="form-trap" aria-hidden="true">
+                Leave this empty
+                <input type="text" name="_gotcha" tabIndex="-1" autoComplete="off" />
+              </label>
+              <button className="outline-button contact-submit" type="submit" disabled={status === "sending"}>
+                {status === "sending" ? "Sending..." : "Send Message"}
+              </button>
+              {feedback && <p className={`form-feedback ${status}`}>{feedback}</p>}
+            </form>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+function ContactSection({ variant = "home" }) {
+  const [contactOpen, setContactOpen] = useState(false);
+  const isAbout = variant === "about";
+
+  return (
+    <footer className={isAbout ? "about-contact" : "footer"} id="contact">
       <DoodleText className="footer-note">Let&apos;s make some noise!</DoodleText>
-      <address>
-        <a href="mailto:sydneytseng.sound@gmail.com">
-          <Mail /> sydneytseng.sound@gmail.com
-        </a>
-        <a href="https://instagram.com/sydneytseng.sound" target="_blank" rel="noreferrer">
-          <Instagram /> @sydneytseng.sound
-        </a>
-        <span>
-          <MapPin /> Taipei, Taiwan
-        </span>
-      </address>
-      <img className="globe-doodle" src={assetPath("/images/doodles/globe-smile.svg")} alt="" aria-hidden="true" />
-      <DoodleText className="thanks-note">Thanks for visiting!</DoodleText>
+      <button className="outline-button contact-button" type="button" onClick={() => setContactOpen(true)}>
+        <Mail /> Contact Me
+      </button>
+      <img
+        className={`globe-doodle${isAbout ? " about-globe" : ""}`}
+        src={assetPath("/images/doodles/globe-smile.svg")}
+        alt=""
+        aria-hidden="true"
+      />
+      {!isAbout && <DoodleText className="thanks-note">Thanks for visiting!</DoodleText>}
+      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
     </footer>
   );
+}
+
+function Footer() {
+  return <ContactSection />;
 }
 
 const approachItems = [
@@ -585,28 +683,7 @@ function AboutPage() {
         </aside>
       </section>
 
-      <footer className="about-contact" id="contact">
-        <h2>Let’s Connect</h2>
-        <DrawnLine />
-        <address>
-          <a href="mailto:sydneytseng.sound@gmail.com">
-            <Mail /> sydneytseng.sound@gmail.com
-          </a>
-          <a href="https://instagram.com/sydneytseng.sound" target="_blank" rel="noreferrer">
-            <Instagram /> @sydneytseng.sound
-          </a>
-          <span>
-            <MapPin /> Taipei, Taiwan
-          </span>
-        </address>
-        <img
-          className="globe-doodle about-globe"
-          src={assetPath("/images/doodles/globe-smile.svg")}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-        />
-      </footer>
+      <ContactSection variant="about" />
     </main>
   );
 }

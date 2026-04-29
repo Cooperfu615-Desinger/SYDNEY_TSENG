@@ -652,21 +652,20 @@ h2 {
   rotate: -6deg;
 }
 
-.footer address {
-  display: grid;
-  gap: 10px;
-  font-style: normal;
-}
-
-.footer address a,
-.footer address span {
+.contact-button {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-self: start;
+  gap: 10px;
+  width: max-content;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
 }
 
-.footer address svg {
+.contact-button svg {
   width: 22px;
+  height: 22px;
   color: #fff;
 }
 
@@ -778,8 +777,7 @@ h2 {
 .tools-card h2,
 .work-tags h2,
 .approach-section h2,
-.currently-note h2,
-.about-contact h2 {
+.currently-note h2 {
   margin: 0;
   font-size: clamp(22px, 2vw, 28px);
   line-height: 1;
@@ -927,7 +925,6 @@ h2 {
 
 .work-tags .doodle-text::after,
 .about-side-note::after,
-.about-contact h2::after,
 .currently-note .doodle-text::after {
   display: block;
   height: 8px;
@@ -1123,47 +1120,24 @@ h2 {
 .about-contact {
   position: relative;
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr) 140px;
+  grid-template-columns: minmax(220px, 1fr) minmax(180px, auto) 140px;
   align-items: center;
   gap: 28px;
   min-height: 150px;
   padding: 26px clamp(28px, 4vw, 56px);
 }
 
-.about-contact h2 {
+.about-contact .footer-note {
   font-size: clamp(24px, 2.2vw, 31px);
 }
 
-.about-contact h2::after {
+.about-contact .footer-note::after {
   width: 210px;
   margin-top: 4px;
 }
 
 .about-contact .drawn-line {
   display: none;
-}
-
-.about-contact address {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 24px clamp(26px, 4vw, 58px);
-  font-style: normal;
-}
-
-.about-contact address a,
-.about-contact address span {
-  display: inline-grid;
-  grid-template-columns: 26px minmax(0, 1fr);
-  align-items: center;
-  gap: 14px;
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.about-contact address svg {
-  width: 26px;
-  height: 26px;
 }
 
 .about-globe {
@@ -1203,6 +1177,99 @@ h2 {
 .work-modal p {
   margin: 6px 0 0;
   text-transform: uppercase;
+}
+
+.contact-modal {
+  position: relative;
+  width: min(560px, 94vw);
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: #050505;
+  color: #fff;
+}
+
+.contact-modal h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.contact-modal .drawn-line {
+  width: min(100%, 320px);
+  height: 26px;
+  margin: 4px 0 22px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: #020202;
+  color: #fff;
+  font: inherit;
+}
+
+.contact-form input {
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.contact-form textarea {
+  min-height: 142px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--blue);
+  outline: 2px solid rgba(7, 87, 255, 0.28);
+  outline-offset: 2px;
+}
+
+.form-trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-submit {
+  justify-self: start;
+  margin-top: 4px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.form-feedback {
+  margin: 0;
+  color: var(--blue);
+  font-size: 14px;
+}
+
+.form-feedback.error {
+  color: #fff;
 }
 
 .close-button {
@@ -1354,11 +1421,6 @@ h2 {
 
   .about-contact {
     grid-template-columns: 1fr;
-  }
-
-  .about-contact address {
-    display: grid;
-    gap: 14px;
   }
 
   .about-globe {
@@ -1709,17 +1771,6 @@ h2 {
   .footer-note,
   .thanks-note {
     font-size: 30px;
-  }
-
-  .footer address {
-    gap: 14px;
-    font-size: 14px;
-  }
-
-  .footer address a,
-  .footer address span {
-    align-items: start;
-    overflow-wrap: anywhere;
   }
 
   .globe-doodle {
