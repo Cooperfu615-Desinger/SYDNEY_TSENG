@@ -1,6 +1,6 @@
 # Sydney Tseng Portfolio - Project Handoff
 
-Last updated: 2026-04-27
+Last updated: 2026-04-29
 Project path: `/Users/cooperfu/Desktop/SYDNEY_TSENG`
 GitHub repo: `https://github.com/Cooperfu615-Desinger/SYDNEY_TSENG`
 Current branch: `main`
@@ -9,7 +9,7 @@ Current branch: `main`
 
 This is Sydney Tseng's personal portfolio website for sound design work in games and digital experiences.
 
-The current direction is a high-contrast editorial site with black-and-white photography, electric-blue handwritten doodles, playable audio, a Sound Lab, and separate desktop/mobile compositions. The site is implemented as a Vite + React app and is configured for GitHub Pages under the `/SYDNEY_TSENG/` base path.
+The current direction is a high-contrast editorial site with black-and-white photography, electric-blue handwritten doodles, playable audio, a Sound Lab, and separate desktop/mobile compositions. The site is implemented as a Vite + React app and is configured for GitHub Pages on the custom domain `sydneytseng.com`.
 
 ## Current Tech Stack
 
@@ -36,13 +36,13 @@ git log --oneline -8
 Local dev URL:
 
 ```txt
-http://localhost:5173/SYDNEY_TSENG/
+http://localhost:5173/
 ```
 
 GitHub Pages URL:
 
 ```txt
-https://cooperfu615-desinger.github.io/SYDNEY_TSENG/
+https://sydneytseng.com/
 ```
 
 ## Deployment Status
@@ -52,7 +52,9 @@ GitHub Pages deployment has been set up.
 Important files:
 
 - `vite.config.js`
-  - Uses `base: "/SYDNEY_TSENG/"`
+  - Uses `base: "/"`
+- `public/CNAME`
+  - Contains `sydneytseng.com` so GitHub Pages keeps the custom domain after Actions deploys
 - `.github/workflows/deploy.yml`
   - Builds with Node 22
   - Runs `npm ci`
@@ -120,8 +122,8 @@ SYDNEY_TSENG/
 
 The app uses a lightweight route helper in `src/App.jsx`:
 
-- `/SYDNEY_TSENG/` shows the home page.
-- `/SYDNEY_TSENG/about` shows the About page.
+- `/` shows the home page.
+- `/about` shows the About page.
 
 This is not React Router. If future sessions add more pages, keep the existing `getRoute()`, `appPath()`, and GitHub Pages fallback behavior in mind.
 
@@ -207,7 +209,7 @@ The older sample-row list was removed from the visible layout. The current mobil
 Route:
 
 ```txt
-/SYDNEY_TSENG/about
+/about
 ```
 
 Main asset:
@@ -357,4 +359,3 @@ npm run dev
 ```
 
 For this handoff update, `PROJECT_HANDOFF.md` should be committed so future sessions can read it directly.
-
