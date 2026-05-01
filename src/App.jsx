@@ -759,5 +759,13 @@ function getRoute() {
 }
 
 export default function App() {
-  return getRoute() === "/about" ? <AboutPage /> : <HomePage />;
+  const handleContextMenu = (event) => {
+    if (event.target.closest("input, textarea")) {
+      return;
+    }
+
+    event.preventDefault();
+  };
+
+  return <div onContextMenu={handleContextMenu}>{getRoute() === "/about" ? <AboutPage /> : <HomePage />}</div>;
 }
